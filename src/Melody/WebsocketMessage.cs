@@ -4,9 +4,9 @@ namespace Melody;
 
 internal class WebsocketMessage
 {
-    public Op Op { get; init; } = Op.Unknown;
-
     public string GuildId { get; init; } = string.Empty;
+    
+    public Op Op { get; init; }
 
     public PlayerState? State { get; init; }
 }

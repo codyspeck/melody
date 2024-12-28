@@ -1,5 +1,7 @@
 ﻿using System.Net.WebSockets;
 using System.Text;
+using System.Text.Json;
+using System.Text.Json.Nodes;
 
 namespace Melody;
 
@@ -21,12 +23,16 @@ public class LavalinkClient
 
         await webSocket.ConnectAsync(uri, CancellationToken.None);
 
-        var buffer = new byte[1024];
+        var buffer = new byte[2048];
         
         var result = await webSocket.ReceiveAsync(buffer, CancellationToken.None);
         
         var response = Encoding.UTF8.GetString(buffer, 0, result.Count);
+
+        var websocketMessage = JsonSerializer.Deserialize<WebsocketMessage>(response);
         
-        Console.WriteLine(response);
+        Console.WriteLine(websocketMessage.GuildId);
+        Console.WriteLine(websocketMessage.Op);
+        Console.WriteLine(websocketMessage.State);
     }
 }
