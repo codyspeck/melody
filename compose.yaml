@@ -1,0 +1,26 @@
+services:
+  lavalink:
+    image: fredboat/lavalink:4.0.8
+    ports:
+      - "2333:2333"
+    environment:      
+      LAVALINK_PLUGINS_0_DEPENDENCY: "com.github.topi314.lavasrc:lavasrc-plugin:4.3.0"                    
+      LAVALINK_SERVER_PASSWORD: "youshallnotpass"
+      LAVALINK_SERVER_SOURCES_YOUTUBE: "false"
+      LAVALINK_SERVER_SOURCES_SPOTIFY: "true"
+      PLUGINS_LAVASRC_PROVIDERS_0: "ytsearch:\"%ISRC%\"" # Will be ignored if track does not have an ISRC. See https://esearch.wikipedia.org/wiki/International_Standard_Recording_Code
+      PLUGINS_LAVASRC_PROVIDERS_1: "ytsearch:%QUERY%" # Will be used if track has no ISRC or no track could be found for the ISRC
+      PLUGINS_LAVASRC_PROVIDERS_2: "scsearch:%QUERY%" # Soundcloud search provider
+      PLUGINS_LAVASRC_PROVIDERS_3: "spsearch:%QUERY%" # Spotify search provider
+      PLUGINS_LAVASRC_PROVIDERS_4: "sprec:%QUERY%" # Spotify recommendation search provider
+      PLUGINS_LAVASRC_PROVIDERS_5: "ymsearch:%QUERY%" # YouTube Music search provider
+      PLUGINS_LAVASRC_PROVIDERS_6: "amsearch:%QUERY%" # Apple Music search provider
+      PLUGINS_LAVASRC_PROVIDERS_7: "dzisrc:%ISRC%" # Deezer ISRC provider
+      PLUGINS_LAVASRC_PROVIDERS_8: "dzsearch:%QUERY%" # Deezer search provider
+      PLUGINS_LAVASRC_PROVIDERS_9: "ymsearch:%QUERY%" # Yandex Music search provider
+      PLUGINS_LAVASRC_SOURCES_SPOTIFY: "true"
+      PLUGINS_LAVASRC_COUNTRYCODE: "US"
+      PLUGINS_LAVASRC_SPOTIFY_CLIENTID: "401b60fd39604ea1afbdd38d0a222f7c"
+      PLUGINS_LAVASRC_SPOTIFY_CLIENTSECRET: "5bbb7443f8164eed99457c3f844fb564"
+      PLUGINS_LAVASRC_SPOTIFY_SPDC: "AQD6XtUvzsESuw6dj6CUyPlwga7UZ8fpJkOaAn9pF34Vqj667OSE43iDzOhAhhnj_c_b1xMXSCsnC8hjkxSuTtUyV2P2sQ0_GN603iSwy5WPazUNO0UD4YNkVbgkcVaiQexDnqODslc5GwYHObHWlOAfJZ-uiiebSXQ28JtQ9Py1sQsGBo9ShPrmtgbizyQ4yPbV4gRerx_QrnzZ1gE"
+      SERVER_PORT: "2333"
